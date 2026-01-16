@@ -1,46 +1,19 @@
-package com.example.library_management.model;
+package com.example.library_management.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "author")
-public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class AuthorDTO {
     private String name;
     private int age;
     private String email;
     private String country;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private java.util.List<Book> books;
-
-    public java.util.List<Book> getBooks() {
-        return books;
+    public AuthorDTO() {
     }
 
-    public void setBooks(java.util.List<Book> books) {
-        this.books = books;
-    }
-
-    public Author() {
-    }
-
-    public Author(int id, String name, int age, String email, String country) {
-        this.id = id;
+    public AuthorDTO(String name, int age, String email, String country) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.country = country;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
