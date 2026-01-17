@@ -36,4 +36,8 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> findAll() {
         return authorRepository.findAll();
     }
+    public String deleteAuthor(int id){
+        authorRepository.deleteById(id);
+        return "Author deleted";
+    }
 }

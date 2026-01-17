@@ -36,7 +36,10 @@ public class StudentController {
         public Student updateMobile ( @PathVariable int id, @RequestBody String mobile){
             return studentService.updateMobile(mobile, id);
         }
-
+    @GetMapping("/deletebyId/{id}")
+    public String delete(@PathVariable int id){
+        return studentService.deletebyId(id);
+    }
 
 
 }

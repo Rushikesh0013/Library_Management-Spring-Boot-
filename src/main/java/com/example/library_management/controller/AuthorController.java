@@ -29,4 +29,8 @@ public class AuthorController {
     public List<Author> findAll() {
         return authorService.findAll();
     }
+    @DeleteMapping("/{id}")
+    public String deleteAuthor(@PathVariable int id){
+        return authorService.deleteAuthor(id);
+    }
 }

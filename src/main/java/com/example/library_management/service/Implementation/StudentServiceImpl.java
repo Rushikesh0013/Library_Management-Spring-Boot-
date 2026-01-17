@@ -60,4 +60,12 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(student);
         return student;
     }
+
+
+
+    @Override
+    public String deletebyId(int id){
+        studentRepository.deleteById(id);
+        return "Student deleted";
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.library_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +13,7 @@ public class Author {
     private int age;
     private String email;
     private String country;
-
+@JsonIgnore
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private java.util.List<Book> books;
 
