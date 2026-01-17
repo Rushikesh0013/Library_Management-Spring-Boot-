@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +27,9 @@ public class Card {
     @OneToOne
     @JoinColumn
     Student student;
+    @OneToMany(mappedBy = "card")
+    private List<Transaction> IssuedBook=new ArrayList<>();
+
 
     public Card(int cardId, Date issueDate, Date updateOn, Date expiryDate, Status cardStatus, Student student) {
         this.cardId = cardId;
