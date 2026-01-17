@@ -11,4 +11,5 @@ public interface TransactionService {
 
 
     public String createTransaction(TransactionDTO transactionDTO);
+    public Transaction returnBook(int t_id);
 }

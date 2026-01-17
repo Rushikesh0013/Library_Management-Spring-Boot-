@@ -24,4 +24,9 @@ public class TransactionController {
         return transactionService.findAll();
 
     }
+    @GetMapping("/return/{t_id}")
+    public Transaction returnBook(@PathVariable int t_id){
+//        System.out.println(boo+" "+cardId);
+        return transactionService.returnBook(t_id);
+    }
 }

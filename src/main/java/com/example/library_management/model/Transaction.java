@@ -21,11 +21,34 @@ public class Transaction {
     private Date issueDate;
     @ManyToOne
     @JoinColumn
-    Card card;
+    private Card card;
 
     @ManyToOne
     @JoinColumn
-    Book book;
+    private Book book;
+
+    private float amount;
+    private Date submitDate;
+
+    public Date getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public Transaction(float amount) {
+        this.amount = amount;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
 
     public int getTransactionId() {
         return transactionId;

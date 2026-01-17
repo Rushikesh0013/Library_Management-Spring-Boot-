@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,10 +38,28 @@ private TransactionRepository transactionRepository;
         t.setBook(b);
         t.setTransactionStatus(transactionDTO.getTransactionStatus());
         transactionRepository.save(t);
+
         return "BOOK ISSUED";
     }
 
     public List<Transaction> findAll(){
         return transactionRepository.findAll();
+    }
+    public Transaction returnBook(int t_id){
+        Transaction t=transactionRepository.findById(t_id).orElse(null);
+        t.setTransactionStatus(TransactionStatus.SUBMITTED);
+        long days = ChronoUnit.DAYS.between(
+                t.getIssueDate()
+                        .toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate(),
+                LocalDate.now()
+        );
+        System.out.println(days);
+        t.setAmount(days*t.getBook().getRentPrice());
+        transactionRepository.save(t);
+        return t;
+
+
     }
 }
